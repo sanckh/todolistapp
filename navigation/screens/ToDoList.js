@@ -1,6 +1,6 @@
-import { StatusBar } from 'expo-status-bar';
+
 import { KeyboardAvoidingView, StyleSheet, Text, View, TextInput, TouchableOpacity, Platform, Keyboard } from 'react-native';
-import Task from 'D:\Programming\todolistapp\components\Task.js';
+import Task from '../../components/Task';
 import React, { useState } from 'react';
 import { ScrollView } from 'react-native-web';
 
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#E8EAED',
     },
     tasksWrapper: {
-        paddingTop: 80,
+        paddingTop: 20,
         paddingHorizontal: 20,
     },
     sectionTitle: {
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     },
     writeTaskWrapper: {
         position: 'absolute',
-        bottom: 60,
+        bottom: 20,
         paddingLeft: 10,
         paddingRight: 10,
         width: '100%',
