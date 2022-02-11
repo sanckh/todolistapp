@@ -3,6 +3,7 @@ import { KeyboardAvoidingView, StyleSheet, Text, View, TextInput, TouchableOpaci
 import Task from '../../components/Task';
 import React, { useState } from 'react';
 import { ScrollView } from 'react-native-web';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 
 export default function ToDoList() {
@@ -26,7 +27,8 @@ export default function ToDoList() {
         <View style={styles.container}>
             {/* Scroll View when list gets longer than page */}
             <ScrollView contentContainerStyle={{
-                flexGrow: 1
+                flexGrow: 1,
+                paddingBottom: 120
             }} keyboardShouldPersistTaps='handled'>
 
                 {/*Today's Tasks */}
@@ -56,12 +58,13 @@ export default function ToDoList() {
                 <TextInput style={styles.input} placeholder={'Write a task'} value={task} onChangeText={text => setTask(text)} />
                 <TouchableOpacity onPress={() => handleAddTask()}>
                     <View style={styles.addWrapper}>
-                        <Text style={styles.addText}>+</Text>
+                        <Ionicons name={'add-outline'} size={30} color={'black'}/>
                     </View>
                 </TouchableOpacity>
             </KeyboardAvoidingView>
         </View>
     );
+
 }
 
 const styles = StyleSheet.create({
@@ -88,7 +91,9 @@ const styles = StyleSheet.create({
         width: '100%',
         flexDirection: 'row',
         justifyContent: 'space-between',
-        alignItems: 'center'
+        alignItems: 'center',
+        paddingBottom: 55,
+
     },
     input: {
         paddingVertical: 15,
@@ -98,18 +103,24 @@ const styles = StyleSheet.create({
         borderRadius: 60,
         borderColor: '#C0C0C0',
         borderWidth: 1,
+        shadowRadius: 5,
+        shadowOpacity: 100
     },
     addWrapper: {
         width: 60,
         height: 60,
-        backgroundColor: '#FFF',
+        backgroundColor: '#55BCF6',
         borderRadius: 60,
         justifyContent: 'center',
         alignItems: 'center',
         borderColor: '#C0C0C0',
         borderWidth: 1,
+        shadowRadius: 5,
+        shadowOpacity: 100
     },
     addText: {
+        fontWeight: 'bold',
+        fontSize: 24,
 
     },
 
