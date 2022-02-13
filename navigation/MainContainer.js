@@ -18,7 +18,7 @@ export default function MainContainer() {
         <NavigationContainer>
             <Tab.Navigator
 
-                initialRouteName={calendarName}
+                initialRouteName={Calendar}
                            screenOptions={({route}) => ({
                                tabBarIcon: ({focused, color, size}) => {
                                    let iconName;
@@ -33,9 +33,19 @@ export default function MainContainer() {
                                },
                                tabBarActiveTintColor: '#55BCF6',
                                tabBarInactiveTintColor: 'grey',
-                               //tabBarShowLabel: false, //can add or remove the label
-                               tabBarStyle: {padding: 10, height: 70, borderRadius: 50, position: 'absolute'},
-                               tabBarLabelStyle: {padding: 10}
+                               tabBarShowLabel: false, //can add or remove the label
+                               tabBarStyle:
+                                   {
+                                       padding: 10,
+                                       height: 60,
+                                       borderRadius: 50,
+                                       borderWidth: 0,
+                                       borderColor: '#000000',
+                                       position: 'absolute',
+                                       shadowRadius: 5,
+                                       shadowOpacity: 50
+                                   },
+                               tabBarLabelStyle: {padding: 10},
                            })}>
 
                 <Tab.Screen name={ToDoListName} component={ToDoList}/>
