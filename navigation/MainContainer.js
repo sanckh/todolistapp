@@ -18,7 +18,7 @@ export default function MainContainer() {
         <NavigationContainer>
             <Tab.Navigator
 
-                initialRouteName={Calendar}
+                initialRouteName={ToDoList}
                            screenOptions={({route}) => ({
                                tabBarIcon: ({focused, color, size}) => {
                                    let iconName;

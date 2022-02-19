@@ -66,7 +66,7 @@ export default function CalendarView(){
         <SafeAreaView style={styles.container}>
                         <Agenda  items={items} renderItem = {renderItem}
                                 style={styles.calendarWrapper}
-                                 scrollEnabled={true}
+                                    scrollEnabled={true}
                                    theme={{
                                        // calendarBackground: '#000000', this works
                                        todayTextColor: '#00adf5',
@@ -98,7 +98,4 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flex: 1,
     },
-
-
-
 })
