@@ -1,92 +1,65 @@
 import * as React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
-import {Agenda, Calendar, CalendarList} from 'react-native-calendars';
-import {ScrollView} from "react-native-gesture-handler";
+import {View, StyleSheet, Text, TouchableOpacity, Platform} from 'react-native';
+import {Agenda} from 'react-native-calendars';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {useEffect, useState} from "react";
 import {addDays, format} from 'date-fns';
-import {SafeAreaView} from "react-native-web";
 
 
-export default function CalendarView(){
+//Class Imports
+import {Button} from "../../components/Button"
+import {Modal} from "../../components/Modal"
 
-    type Item = {
-        name: string;
-    }
-    type Post = {
-        id: number;
-        title: string;
-        body: string;
-        userId: number;
-    };
 
-        const [items, setItems] = useState();
+export default function CalendarView() {
 
-    useEffect(() => {
-        // run once
 
-        const getData = async () => {
-            const response = await fetch(
-                'https://jsonplaceholder.typicode.com/posts',
-            );
-            const data: Post[] = await response.json();
+    const [isModalVisible, setIsModalVisible] = React.useState(false);
+    const handleModal = () => setIsModalVisible(() => !isModalVisible);
 
-            const mappedData = data.map((post, index) => {
-                const date = addDays(new Date(), index);
+    return (
+        <View style={styles.container}>
+            <Agenda
+                    style={styles.calendarWrapper}
+                    scrollEnabled={true}
+                    theme={{
+                        // calendarBackground: '#000000'
+                        todayTextColor: '#00adf5',
+                    }}>
+            </Agenda>
 
-                return {
-                    ...post,
-                    date: format(date, 'yyyy-MM-dd'),
-                }
-            })
-
-            const reduced = mappedData.reduce(
-                (acc: { [key: string]: Post[] }, currentItem) => {
-                    const {date, ...coolItem} = currentItem;
-
-                    acc[date] = [coolItem];
-
-                    return acc;
-                },
-                {},
-            )
-            setItems(reduced);
-        }
-        getData();
-    }, []);
-
-    const renderItem = (item: Item) => {
-        return (
-            <View style={styles.itemContainer}>
-                <Text>{item.name}</Text>
+            <View style={styles.absolute}
+                  behavior={Platform.OS === "ios" ? "padding" : "height"}>
+                <Button onPress={handleModal}/>
+                <Modal isVisible={isModalVisible}>
+                    <Modal.Container>
+                        <Modal.Header title="Placeholder"/>
+                        <Modal.Body>
+                            <Text style={styles.text}>Placeholder Text</Text>
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button onPress={handleModal}/>
+                        </Modal.Footer>
+                    </Modal.Container>
+                </Modal>
             </View>
-        );
-    };
-    return(
-        <SafeAreaView style={styles.container}>
-                        <Agenda  items={items} renderItem = {renderItem}
-                                style={styles.calendarWrapper}
-                                    scrollEnabled={true}
-                                   theme={{
-                                       // calendarBackground: '#000000', this works
-                                       todayTextColor: '#00adf5',
-                                   }}>
-                        </Agenda>
-        </SafeAreaView>
+        </View>
     )
 }
 
 const styles = StyleSheet.create({
+    absolute: {
+      position: 'absolute',
+        bottom: 80,
+        right: 20
+    },
     container: {
+        position: 'static',
         flex: 1,
         backgroundColor: '#E8EAED',
     },
-    calendarWrapper: {
-
-    },
-    items: {
-        height: 500,
-    },
+    calendarWrapper: {},
+    items: {},
     dayPressColor: {
         backgroundColor: '#000000'
     },
@@ -98,4 +71,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flex: 1,
     },
+    text: {
+        fontSize: 16,
+        fontWeight: "400",
+        textAlign: "center",
+    },
+
 })

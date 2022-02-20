@@ -4,12 +4,14 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 
 //screens 
-import Calendar from './screens/Calendar';
+import CalendarView from './screens/Calendar';
 import ToDoList from './screens/ToDoList';
+//import PopUp from './screens/PopUp';
 
 // Screen names
 const calendarName = 'Calendar';
 const ToDoListName = 'To Do List';
+const popUpName = 'Pop Up Window';
 
 const Tab = createBottomTabNavigator();
 
@@ -17,18 +19,24 @@ export default function MainContainer() {
     return (
         <NavigationContainer>
             <Tab.Navigator
-
-                initialRouteName={ToDoList}
+                initialRouteName={CalendarView}
                            screenOptions={({route}) => ({
                                tabBarIcon: ({focused, color, size}) => {
                                    let iconName;
                                    let rn = route.name;
 
-                                   if (rn === ToDoListName) {
+                                   if (rn === ToDoListName)
+                                   {
                                        iconName = focused ? 'list' : 'list-outline'; //icons in package. Change later.
-                                   } else if (rn === calendarName) {
+                                   }
+                                   else if (rn === calendarName)
+                                   {
                                        iconName = focused ? 'calendar' : 'calendar-outline'
                                    }
+                                   // else if (rn === popUpName)
+                                   // {
+                                   //     iconName = focused ? 'apps' : 'apps-outline'
+                                   // }
                                    return <Ionicons name={iconName} size={30} color={color}/>
                                },
                                tabBarActiveTintColor: '#55BCF6',
@@ -47,9 +55,10 @@ export default function MainContainer() {
                                    },
                                tabBarLabelStyle: {padding: 10},
                            })}>
-
+                <Tab.Screen name={calendarName} component={CalendarView}/>
                 <Tab.Screen name={ToDoListName} component={ToDoList}/>
-                <Tab.Screen name={calendarName} component={Calendar}/>
+                {/*<Tab.Screen name ={popUpName} component ={PopUp}/>*/}
+
 
             </Tab.Navigator>
         </NavigationContainer>

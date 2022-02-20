@@ -40,7 +40,7 @@ export default function ToDoList() {
                             taskItems.map((item, index) => {
                                 return (
                                     <TouchableOpacity key={index} onPress={() => completeTask(index)}>
-                                        <Task text={item} />
+                                        <Task text={item}/>
                                     </TouchableOpacity>
                                 )
                             })
@@ -55,7 +55,8 @@ export default function ToDoList() {
             <KeyboardAvoidingView
                 behavior={Platform.OS === "ios" ? "padding" : "height"}
                 style={styles.writeTaskWrapper}>
-                <TextInput style={styles.input} placeholder={'Write a task'} value={task} onChangeText={text => setTask(text)} />
+                <TextInput style={styles.input} placeholder={'Write a task'} value={task}
+                           onChangeText={text => setTask(text)}/>
                 <TouchableOpacity onPress={() => handleAddTask()}>
                     <View style={styles.addWrapper}>
                         <Ionicons name={'add-outline'} size={30} color={'black'}/>
