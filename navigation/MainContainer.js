@@ -44,14 +44,16 @@ export default function MainContainer() {
                                tabBarShowLabel: false, //can add or remove the label
                                tabBarStyle:
                                    {
-                                       padding: 10,
+                                       padding: 0,
+                                       margin: 10,
                                        height: 60,
                                        borderRadius: 50,
                                        borderWidth: 0,
                                        borderColor: '#000000',
                                        position: 'absolute',
-                                       shadowRadius: 5,
+                                       shadowRadius: 1,
                                        shadowOpacity: 50
+
                                    },
                                tabBarLabelStyle: {padding: 10},
                            })}>

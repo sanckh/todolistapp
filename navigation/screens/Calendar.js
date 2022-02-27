@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {View, StyleSheet, Text, TouchableOpacity, Platform} from 'react-native';
 import {Agenda} from 'react-native-calendars';
+import DatePicker from 'react-native-date-picker';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {useEffect, useState} from "react";
 import {addDays, format} from 'date-fns';
@@ -15,6 +16,7 @@ export default function CalendarView() {
 
 
     const [isModalVisible, setIsModalVisible] = React.useState(false);
+    const [date, setDate] = useState(new Date());
     const handleModal = () => setIsModalVisible(() => !isModalVisible);
 
     return (
@@ -33,7 +35,11 @@ export default function CalendarView() {
                 <Button onPress={handleModal}/>
                 <Modal isVisible={isModalVisible}>
                     <Modal.Container>
-                        <Modal.Header title="Placeholder"/>
+                        <Modal.Header title="Placeholder Text"/>
+                        <Model.Body>
+                            <Text style={styles.text}> Pick a Date</Text>
+                            {/*<DatePicker date = {date} onDateChange={setDate}/>*/}
+                        </Model.Body>
                         <Modal.Body>
                             <Text style={styles.text}>Placeholder Text</Text>
                         </Modal.Body>
