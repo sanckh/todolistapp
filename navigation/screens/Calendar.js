@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {View, StyleSheet, Text, TouchableOpacity, Platform} from 'react-native';
+import {View, StyleSheet, Text, TouchableOpacity, Platform, TextInput} from 'react-native';
 import {Agenda} from 'react-native-calendars';
 import DatePicker from 'react-native-date-picker';
 import DateTimePicker from "@react-native-community/datetimepicker";
@@ -53,7 +53,6 @@ export default function CalendarView() {
             date: "2022-02-26", // Modal Value
             title: "Your Event Title" // Modal Value
         }
-
         if (!items[eventDetails.date]) {
             items[eventDetails.date] = [];
         }
@@ -116,6 +115,7 @@ export default function CalendarView() {
                     />
                 )}
                 <Button onPress={handleModal}/>
+
                 <Modal isVisible={isModalVisible}>
                     <Modal.Container>
                         <Modal.Header title="New Agenda Item"/>
@@ -133,6 +133,7 @@ export default function CalendarView() {
                             <Text style={styles.modalText}>Click to add Agenda Item</Text>
                         </View>
                         <Modal.Footer>
+                            <TextInput style={{margin: 30, padding: 20}} placeholder={'Write your agenda'}/>
                             <Button onPress={onAddEventSubmit}/>
                         </Modal.Footer>
 
