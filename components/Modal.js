@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
     header: {
         alignItems: "center",
         justifyContent: "center",
+        paddingBottom: 20,
     },
     text: {
         paddingTop: 10,
@@ -62,9 +63,12 @@ const styles = StyleSheet.create({
         fontSize: 24,
     },
     body: {
-        justifyContent: "center",
-        paddingHorizontal: 15,
-        minHeight: 100,
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        paddingHorizontal: 30,
+        marginHorizontal: 30,
+        minHeight: 30,
     },
     footer: {
         justifyContent: "center",
